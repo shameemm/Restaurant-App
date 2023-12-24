@@ -61,9 +61,27 @@ python manage.py runserver
 
 ## API Endpoints
 
-- `/admin/`: Access the admin panel for restaurant and user management.
-- `/api/restaurants/`: API endpoint for listing and managing restaurants.
-- `/api/users/`: API endpoint for user-related functionalities.
+### For User Operations (/api/users/)
+
+- `POST /api/users/register/` - User registration endpoint.
+- `POST /api/users/login/` - Endpoint for obtaining authentication tokens (login).
+- `POST /api/users/token/refresh/` - Endpoint for token refresh.
+- `GET /api/users/restaurant/` - Get restaurants endpoint for users.
+- `POST /api/users/add_bookmark/` - Add bookmark for a restaurant.
+- `GET /api/users/user_bookmark/<int:pk>/` - Get bookmarks for a user.
+- `POST /api/users/review/` - Submit a review for a restaurant.
+- `PUT /api/users/review/<int:pk>/` - Update or delete a review for a restaurant.
+- `GET /api/users/filter/` - Filter restaurants based on criteria.
+
+  ### For Admin Operations (/admin/)
+
+- `POST /admin/restaurant-list/` - Create a new restaurant.
+- `GET /admin/restaurant-detail/<int:pk>/` - Get details of a specific restaurant.
+- `GET /admin/users/` - Get a list of users (primarily for administrators).
+
+
+Feel free to provide feedback!
+
 
 
    
