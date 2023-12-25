@@ -7,7 +7,6 @@ from users.models import Review
 @receiver([post_save, post_delete], sender=Review)
 def update_restaurant_rating(sender, instance, **kwargs):
     restaurant = instance.restaurant
-    reviews_count = Review.objects.filter(restaurant=restaurant).count()
     avg_rating = Review.objects.filter(restaurant=restaurant).aggregate(avg_rating=Avg('rating'))['avg_rating'] or 0
     
     # Get the restaurant instance
