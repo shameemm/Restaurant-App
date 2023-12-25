@@ -61,11 +61,6 @@ class ReviewRatingView(APIView):
         serializer = ReviewSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            restaurant = request.data.get('restaurant')
-            reviews_count = Review.objects.filter(restaurant=restaurant).count()
-            avg_rating = Review.objects.filter(restaurant=restaurant).aggregate(avg_rating=Avg('rating'))['avg_rating'] or 0
-            
-            Restaurant.objects.filter(id=restaurant).update(rating=avg_rating)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
