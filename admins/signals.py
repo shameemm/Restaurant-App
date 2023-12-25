@@ -14,7 +14,5 @@ def update_restaurant_rating(sender, instance, **kwargs):
     restaurant_instance = Restaurant.objects.filter(id=restaurant.id).first()
 
     if restaurant_instance:
-        # Update the restaurant's rating and reviews count directly
         restaurant_instance.rating = avg_rating
-        restaurant_instance.reviews_count = reviews_count
         restaurant_instance.save()
